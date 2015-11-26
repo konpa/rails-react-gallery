@@ -1,7 +1,5 @@
 language: ruby
 rvm:
-- 2.0.0
-- 2.2.2
 - 2.2.3
 deploy:
   provider: heroku
@@ -9,3 +7,6 @@ deploy:
     secure: RkFiVJFNpFmIoQjUvYLE4JgADv8kjBG45vXyVib5/PxS53SC1ucb2iCU+SN6EW0CHIFSU59dSI0C9VjXBWiDcWySoPIkI6ikQh55NXhVaKVr8NpmasWbvJBQwWfVc/C+HdON4Rj9SvxjZFFFwc/tA7K9slYytv9znAK43YpHFFa4bS4iyMfxZ4XzfIxauL8f4I/YEtPc/US+ySLDjhy8hIrw3ST9GySjLWIg0tA4G/YXB8R+KgY2A3Po4oLN4sqSqe6r+Nb3bsxIUU+4j1+mFygxYqFaZPWfsLtcBJzrJdCXZK25unamdddvFUEtgnXtHmWLhIm/KuQRVGg9GBZOYtQNQbzFGeidqea/8Lb9Evw4xxqYzB9gDdBFhK+fMlu3XNyub6PwEx1/zDhjk9Svbd0XPfHYyIO0k6Rpf0PJokpjfUD9R0Nc5fa8bgeReU3IW80ebizWyUWiSZshvTzshq6Rzp9mV0S4S14hG8qzqIqcszeoC4qoTwq3qJwi46u6VnT9slsZcqAVZ2c90axhSYpyNsuacKJB4sXfyc0OaSOrQGxjuiW7OcHG1oithjjO9SH/ESNsOVjcJtaKeKBUmo2yjnH7T7Ozd8fLiX6NCkdQJAlXjn9LASnhW/gPwJDJWFutrSoYuX2Sm7VEFSgz/2R97oV3mj6nQPV1xA2vAko=
   app:
     master: intense-eyrie-1415
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
